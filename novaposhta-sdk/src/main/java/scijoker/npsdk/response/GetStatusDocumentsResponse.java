@@ -1,13 +1,15 @@
 package scijoker.npsdk.response;
 
+import scijoker.npsdk.common.Base_Response;
+
 /**
  * Created by scijoker on 15.10.16.
  */
 
-public class TrackingDocumentResponseObj extends Base_ResponseObj {
+public class GetStatusDocumentsResponse extends Base_Response {
     public Data[] data;
 
-    public static class Data extends scijoker.npsdk.response.bean.Data {
+    public static class Data extends Base_Data {
         public long Number;
         public String DateCreated;
         public double DocumentWeight;

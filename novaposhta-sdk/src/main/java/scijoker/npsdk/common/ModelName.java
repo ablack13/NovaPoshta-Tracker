@@ -5,5 +5,9 @@ package scijoker.npsdk.common;
  */
 
 public class ModelName {
-    public static String TRACKING_DOCUMENT = "TrackingDocument";
+    public static String GET_STATUS_DOCUMENTS = "TrackingDocument";
+    public static String GET_CITIES = "Address";
+    public static String GET_STREET = "Address";
+    public static String GET_WAREHOUSES = "Address";
+    public static String GET_WAREHOUSES_TYPE = "Address";
 }

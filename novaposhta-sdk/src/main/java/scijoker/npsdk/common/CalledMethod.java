@@ -5,5 +5,11 @@ package scijoker.npsdk.common;
  */
 
 public class CalledMethod {
-    public static String TRACKING_DOCUMENT = "getStatusDocuments";
+    public static String GET_STATUS_DOCUMENTS = "getStatusDocuments";
+    public static String GET_CITIES = "getCities";
+    public static String GET_STREET = "getStreet";
+    public static String GET_WAREHOUSES = "getWarehouses";
+    public static String GET_WAREHOUSES_TYPE = "getWarehouseTypes";
+
+
 }

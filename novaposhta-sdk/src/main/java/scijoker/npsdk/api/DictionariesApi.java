@@ -3,8 +3,16 @@ package scijoker.npsdk.api;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import rx.Observable;
-import scijoker.npsdk.request.TrackingDocumentRequestObj;
-import scijoker.npsdk.response.TrackingDocumentResponseObj;
+import scijoker.npsdk.request.GetCitiesRequest;
+import scijoker.npsdk.request.GetStatusDocumentsRequest;
+import scijoker.npsdk.request.GetStreetRequest;
+import scijoker.npsdk.request.GetWarehouseTypesRequest;
+import scijoker.npsdk.request.GetWarehousesRequest;
+import scijoker.npsdk.response.GetCitiesResponse;
+import scijoker.npsdk.response.GetStatusDocumentsResponse;
+import scijoker.npsdk.response.GetStreetResponse;
+import scijoker.npsdk.response.GetWarehouseTypesResponse;
+import scijoker.npsdk.response.GetWarehousesResponse;
 
 /**
  * Created by scijoker on 15.10.16.
@@ -12,5 +20,17 @@ import scijoker.npsdk.response.TrackingDocumentResponseObj;
 
 public interface DictionariesApi {
     @POST("/v2.0/json/")
-    Observable<TrackingDocumentResponseObj> getDocumentStatuses(@Body TrackingDocumentRequestObj obj);
+    Observable<GetStatusDocumentsResponse> getDocumentStatuses(@Body GetStatusDocumentsRequest obj);
+
+    @POST("/v2.0/json/")
+    Observable<GetCitiesResponse> getCities(@Body GetCitiesRequest obj);
+
+    @POST("/v2.0/json/")
+    Observable<GetStreetResponse> getStreet(@Body GetStreetRequest obj);
+
+    @POST("/v2.0/json/")
+    Observable<GetWarehousesResponse> getWarehouses(@Body GetWarehousesRequest obj);
+
+    @POST("/v2.0/json/")
+    Observable<GetWarehouseTypesResponse> getWarehouseTypes(@Body GetWarehouseTypesRequest obj);
 }
