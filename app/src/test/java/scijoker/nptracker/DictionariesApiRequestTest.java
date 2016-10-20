@@ -7,11 +7,15 @@ import org.junit.Test;
 import rx.functions.Action1;
 import scijoker.npsdk.NovaPoshtaSDK;
 import scijoker.npsdk.request.GetCitiesRequest;
+import scijoker.npsdk.request.GetCounterpartiesRequest;
+import scijoker.npsdk.request.GetCounterpartyAddressesRequest;
 import scijoker.npsdk.request.GetStatusDocumentsRequest;
 import scijoker.npsdk.request.GetStreetRequest;
 import scijoker.npsdk.request.GetWarehouseTypesRequest;
 import scijoker.npsdk.request.GetWarehousesRequest;
 import scijoker.npsdk.response.GetCitiesResponse;
+import scijoker.npsdk.response.GetCounterpartiesResponse;
+import scijoker.npsdk.response.GetCounterpartyAddressesResponse;
 import scijoker.npsdk.response.GetStatusDocumentsResponse;
 import scijoker.npsdk.response.GetStreetResponse;
 import scijoker.npsdk.response.GetWarehouseTypesResponse;
@@ -27,7 +31,9 @@ public class DictionariesApiRequestTest {
     private String ttn = "20450017510673";
     private String cityNamePrefix = "Івано-";
     private String cityRef = "db5c8904-391c-11dd-90d9-001a92567626";//Ivano-Frankivsk,UA
+    private String conterpartyRef = "3a62aafd-92a3-11e6-a54a-005056801333";
     private String streetNamePrefix = "Заліз";
+    private String descriptionNamePrefix = "Прив";
 
     @Before
     public void setUp() throws Exception {
@@ -148,6 +154,54 @@ public class DictionariesApiRequestTest {
 //                            if (response.data.length > 0) {
 //                                System.out.println("getWarehouse::" + response.data[0].Description);
 //                            }
+                    }
+                });
+    }
+
+    @Test
+    public void testGetCounterpartiesRequest() {
+        NovaPoshtaSDK.getDictionariesApi()
+                .getCounterparties(new GetCounterpartiesRequest(false, 1))
+                .subscribe(new Action1<GetCounterpartiesResponse>() {
+                    @Override
+                    public void call(GetCounterpartiesResponse response) {
+                        Assert.assertNotNull(response);
+                        Assert.assertNotNull(response.data);
+                        if (response.data.length > 0) {
+                            System.out.println("getCounterparties::" + response.data[0].Description);
+                        }
+                    }
+                });
+    }
+
+    @Test
+    public void testGetCounterpartiesWithDescriptionNamePrefixRequest() {
+        NovaPoshtaSDK.getDictionariesApi()
+                .getCounterparties(new GetCounterpartiesRequest(false, descriptionNamePrefix))
+                .subscribe(new Action1<GetCounterpartiesResponse>() {
+                    @Override
+                    public void call(GetCounterpartiesResponse response) {
+                        Assert.assertNotNull(response);
+                        Assert.assertNotNull(response.data);
+                        if (response.data.length > 0) {
+                            System.out.println("getCounterparties::" + response.data[0].Description);
+                        }
+                    }
+                });
+    }
+
+    @Test
+    public void testGetCounterpartyAddressesRequest() {
+        NovaPoshtaSDK.getDictionariesApi()
+                .getCounterpartyAddresses(new GetCounterpartyAddressesRequest(false, conterpartyRef))
+                .subscribe(new Action1<GetCounterpartyAddressesResponse>() {
+                    @Override
+                    public void call(GetCounterpartyAddressesResponse response) {
+                        Assert.assertNotNull(response);
+//                        Assert.assertNotNull(response.data);
+//                        if (response.data.length > 0) {
+//                            System.out.println("testGetCounterpartyAddressesRequest::" + response.data[0].Description);
+//                        }
                     }
                 });
     }

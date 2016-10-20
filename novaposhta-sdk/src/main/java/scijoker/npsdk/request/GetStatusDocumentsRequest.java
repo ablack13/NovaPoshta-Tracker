@@ -1,8 +1,6 @@
 package scijoker.npsdk.request;
 
 import scijoker.npsdk.common.Base_Request;
-import scijoker.npsdk.common.CalledMethod;
-import scijoker.npsdk.common.ModelName;
 
 /**
  * Created by scijoker on 15.10.16.
@@ -10,7 +8,7 @@ import scijoker.npsdk.common.ModelName;
 
 public class GetStatusDocumentsRequest extends Base_Request {
     public GetStatusDocumentsRequest(String phone, String... documents) {
-        super(ModelName.GET_STATUS_DOCUMENTS, CalledMethod.GET_STATUS_DOCUMENTS, new GetStatusDocumentsMethodProperties(phone, documents));
+        super("TrackingDocument", "getStatusDocuments", new GetStatusDocumentsMethodProperties(phone, documents));
     }
 
     private static class GetStatusDocumentsMethodProperties extends Base_MethodProperties {
