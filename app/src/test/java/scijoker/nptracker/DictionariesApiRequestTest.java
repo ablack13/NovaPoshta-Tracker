@@ -6,20 +6,20 @@ import org.junit.Test;
 
 import rx.functions.Action1;
 import scijoker.npsdk.NovaPoshtaSDK;
-import scijoker.npsdk.request.GetCitiesRequest;
-import scijoker.npsdk.request.GetCounterpartiesRequest;
-import scijoker.npsdk.request.GetCounterpartyAddressesRequest;
-import scijoker.npsdk.request.GetStatusDocumentsRequest;
-import scijoker.npsdk.request.GetStreetRequest;
-import scijoker.npsdk.request.GetWarehouseTypesRequest;
-import scijoker.npsdk.request.GetWarehousesRequest;
-import scijoker.npsdk.response.GetCitiesResponse;
-import scijoker.npsdk.response.GetCounterpartiesResponse;
-import scijoker.npsdk.response.GetCounterpartyAddressesResponse;
-import scijoker.npsdk.response.GetStatusDocumentsResponse;
-import scijoker.npsdk.response.GetStreetResponse;
-import scijoker.npsdk.response.GetWarehouseTypesResponse;
-import scijoker.npsdk.response.GetWarehousesResponse;
+import scijoker.npsdk.request.AddressGetCitiesRequest;
+import scijoker.npsdk.request.CounterpartyGetCounterpartiesRequest;
+import scijoker.npsdk.request.CounterpartyGetCounterpartyAddressesRequest;
+import scijoker.npsdk.request.TrackingDocumentGetStatusDocumentsRequest;
+import scijoker.npsdk.request.AddressGetStreetRequest;
+import scijoker.npsdk.request.AddressGetWarehouseTypesRequest;
+import scijoker.npsdk.request.AddressGetWarehousesRequest;
+import scijoker.npsdk.response.AddressGetCitiesResponse;
+import scijoker.npsdk.response.CounterpartyGetCounterpartiesResponse;
+import scijoker.npsdk.response.CounterpartyGetCounterpartyAddressesResponse;
+import scijoker.npsdk.response.TrackingDocumentGetStatusDocumentsResponse;
+import scijoker.npsdk.response.AddressGetStreetResponse;
+import scijoker.npsdk.response.AddressGetWarehouseTypesResponse;
+import scijoker.npsdk.response.AddressGetWarehousesResponse;
 import scijoker.nptracker.net.ApiConstants;
 
 /**
@@ -43,13 +43,13 @@ public class DictionariesApiRequestTest {
     @Test
     public void testGetDocumentStatusesRequest() {
         NovaPoshtaSDK.getDictionariesApi()
-                .getDocumentStatuses(new GetStatusDocumentsRequest(phone, ttn))
-                .subscribe(new Action1<GetStatusDocumentsResponse>() {
+                .getTrackingDocumentStatuses(new TrackingDocumentGetStatusDocumentsRequest(phone, ttn))
+                .subscribe(new Action1<TrackingDocumentGetStatusDocumentsResponse>() {
                     @Override
-                    public void call(GetStatusDocumentsResponse response) {
+                    public void call(TrackingDocumentGetStatusDocumentsResponse response) {
                         Assert.assertNotNull(response);
                         Assert.assertNotNull(response.data);
-                        for (GetStatusDocumentsResponse.Data data : response.data) {
+                        for (TrackingDocumentGetStatusDocumentsResponse.Data data : response.data) {
                             Assert.assertNotNull(data);
                             Assert.assertNotNull(data.Number);
                             System.out.println("TTN Number::" + data.Number);
@@ -66,10 +66,10 @@ public class DictionariesApiRequestTest {
     @Test
     public void testGetCitiesRequest() {
         NovaPoshtaSDK.getDictionariesApi()
-                .getCities(new GetCitiesRequest())
-                .subscribe(new Action1<GetCitiesResponse>() {
+                .getCities(new AddressGetCitiesRequest())
+                .subscribe(new Action1<AddressGetCitiesResponse>() {
                     @Override
-                    public void call(GetCitiesResponse response) {
+                    public void call(AddressGetCitiesResponse response) {
                         Assert.assertNotNull(response);
                         Assert.assertNotNull(response.data);
                         Assert.assertNotNull(response.info.totalCount);
@@ -81,13 +81,13 @@ public class DictionariesApiRequestTest {
     @Test
     public void testGetCitiesByNamePrefixRequest() {
         NovaPoshtaSDK.getDictionariesApi()
-                .getCities(new GetCitiesRequest(cityNamePrefix))
-                .subscribe(new Action1<GetCitiesResponse>() {
+                .getCities(new AddressGetCitiesRequest(cityNamePrefix))
+                .subscribe(new Action1<AddressGetCitiesResponse>() {
                     @Override
-                    public void call(GetCitiesResponse response) {
+                    public void call(AddressGetCitiesResponse response) {
                         Assert.assertNotNull(response);
                         Assert.assertNotNull(response.data);
-                        for (GetCitiesResponse.Data data : response.data) {
+                        for (AddressGetCitiesResponse.Data data : response.data) {
                             System.out.println("city by name::" + data.Description + "(" + data.DescriptionRu + ")");
                         }
                     }
@@ -97,10 +97,10 @@ public class DictionariesApiRequestTest {
     @Test
     public void testGetStreetRequest() {
         NovaPoshtaSDK.getDictionariesApi()
-                .getStreet(new GetStreetRequest(cityRef, 1))
-                .subscribe(new Action1<GetStreetResponse>() {
+                .getStreet(new AddressGetStreetRequest(cityRef, 1))
+                .subscribe(new Action1<AddressGetStreetResponse>() {
                     @Override
-                    public void call(GetStreetResponse response) {
+                    public void call(AddressGetStreetResponse response) {
                         Assert.assertNotNull(response);
                         Assert.assertNotNull(response.data);
                         if (response.data.length > 0) {
@@ -113,10 +113,10 @@ public class DictionariesApiRequestTest {
     @Test
     public void testGetStreetByNamePrefixRequest() {
         NovaPoshtaSDK.getDictionariesApi()
-                .getStreet(new GetStreetRequest(cityRef, streetNamePrefix))
-                .subscribe(new Action1<GetStreetResponse>() {
+                .getStreet(new AddressGetStreetRequest(cityRef, streetNamePrefix))
+                .subscribe(new Action1<AddressGetStreetResponse>() {
                     @Override
-                    public void call(GetStreetResponse response) {
+                    public void call(AddressGetStreetResponse response) {
                         Assert.assertNotNull(response);
                         Assert.assertNotNull(response.data);
                         if (response.data.length > 0) {
@@ -129,10 +129,10 @@ public class DictionariesApiRequestTest {
     @Test
     public void testGetWarehousesRequest() {
         NovaPoshtaSDK.getDictionariesApi()
-                .getWarehouses(new GetWarehousesRequest(cityRef))
-                .subscribe(new Action1<GetWarehousesResponse>() {
+                .getWarehouses(new AddressGetWarehousesRequest(cityRef))
+                .subscribe(new Action1<AddressGetWarehousesResponse>() {
                     @Override
-                    public void call(GetWarehousesResponse response) {
+                    public void call(AddressGetWarehousesResponse response) {
                         Assert.assertNotNull(response);
                         Assert.assertNotNull(response.data);
                         if (response.data.length > 0) {
@@ -145,10 +145,10 @@ public class DictionariesApiRequestTest {
     @Test
     public void testGetWarehouseTypesRequest() {
         NovaPoshtaSDK.getDictionariesApi()
-                .getWarehouseTypes(new GetWarehouseTypesRequest())
-                .subscribe(new Action1<GetWarehouseTypesResponse>() {
+                .getWarehouseTypes(new AddressGetWarehouseTypesRequest())
+                .subscribe(new Action1<AddressGetWarehouseTypesResponse>() {
                     @Override
-                    public void call(GetWarehouseTypesResponse response) {
+                    public void call(AddressGetWarehouseTypesResponse response) {
                         Assert.assertNotNull(response);
 //                            Assert.assertNotNull(response.data);
 //                            if (response.data.length > 0) {
@@ -161,10 +161,10 @@ public class DictionariesApiRequestTest {
     @Test
     public void testGetCounterpartiesRequest() {
         NovaPoshtaSDK.getDictionariesApi()
-                .getCounterparties(new GetCounterpartiesRequest(false, 1))
-                .subscribe(new Action1<GetCounterpartiesResponse>() {
+                .getCounterparties(new CounterpartyGetCounterpartiesRequest(false, 1))
+                .subscribe(new Action1<CounterpartyGetCounterpartiesResponse>() {
                     @Override
-                    public void call(GetCounterpartiesResponse response) {
+                    public void call(CounterpartyGetCounterpartiesResponse response) {
                         Assert.assertNotNull(response);
                         Assert.assertNotNull(response.data);
                         if (response.data.length > 0) {
@@ -177,10 +177,10 @@ public class DictionariesApiRequestTest {
     @Test
     public void testGetCounterpartiesWithDescriptionNamePrefixRequest() {
         NovaPoshtaSDK.getDictionariesApi()
-                .getCounterparties(new GetCounterpartiesRequest(false, descriptionNamePrefix))
-                .subscribe(new Action1<GetCounterpartiesResponse>() {
+                .getCounterparties(new CounterpartyGetCounterpartiesRequest(false, descriptionNamePrefix))
+                .subscribe(new Action1<CounterpartyGetCounterpartiesResponse>() {
                     @Override
-                    public void call(GetCounterpartiesResponse response) {
+                    public void call(CounterpartyGetCounterpartiesResponse response) {
                         Assert.assertNotNull(response);
                         Assert.assertNotNull(response.data);
                         if (response.data.length > 0) {
@@ -193,15 +193,15 @@ public class DictionariesApiRequestTest {
     @Test
     public void testGetCounterpartyAddressesRequest() {
         NovaPoshtaSDK.getDictionariesApi()
-                .getCounterpartyAddresses(new GetCounterpartyAddressesRequest(false, conterpartyRef))
-                .subscribe(new Action1<GetCounterpartyAddressesResponse>() {
+                .getCounterpartyAddresses(new CounterpartyGetCounterpartyAddressesRequest(false, conterpartyRef))
+                .subscribe(new Action1<CounterpartyGetCounterpartyAddressesResponse>() {
                     @Override
-                    public void call(GetCounterpartyAddressesResponse response) {
+                    public void call(CounterpartyGetCounterpartyAddressesResponse response) {
                         Assert.assertNotNull(response);
-//                        Assert.assertNotNull(response.data);
-//                        if (response.data.length > 0) {
-//                            System.out.println("testGetCounterpartyAddressesRequest::" + response.data[0].Description);
-//                        }
+                        Assert.assertNotNull(response.data);
+                        if (response.data.length > 0) {
+                            System.out.println("testGetCounterpartyAddressesRequest::" + response.data[0].Description);
+                        }
                     }
                 });
     }

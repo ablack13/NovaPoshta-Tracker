@@ -6,7 +6,7 @@ import scijoker.npsdk.common.Base_Response;
  * Created by scijoker on 17.10.16.
  */
 
-public class GetCitiesResponse extends Base_Response {
+public class AddressGetCitiesResponse extends Base_Response {
     public Data[] data;
     public Info info;
 

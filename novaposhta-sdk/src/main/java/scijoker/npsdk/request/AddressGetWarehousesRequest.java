@@ -6,8 +6,8 @@ import scijoker.npsdk.common.Base_Request;
  * Created by scijoker on 17.10.16.
  */
 
-public class GetWarehousesRequest extends Base_Request {
-    public GetWarehousesRequest(String cityRef) {
+public class AddressGetWarehousesRequest extends Base_Request {
+    public AddressGetWarehousesRequest(String cityRef) {
         super("Address", "getWarehouses", new MethodProperties(cityRef));
     }
 

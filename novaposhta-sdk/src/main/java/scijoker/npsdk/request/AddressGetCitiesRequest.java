@@ -6,12 +6,12 @@ import scijoker.npsdk.common.Base_Request;
  * Created by scijoker on 17.10.16.
  */
 
-public class GetCitiesRequest extends Base_Request {
-    public GetCitiesRequest() {
+public class AddressGetCitiesRequest extends Base_Request {
+    public AddressGetCitiesRequest() {
         this(null);
     }
 
-    public GetCitiesRequest(String cityNamePrefix) {
+    public AddressGetCitiesRequest(String cityNamePrefix) {
         super("Address", "getCities", new GetCitiesMethodProperties(cityNamePrefix));
     }
 

@@ -6,8 +6,8 @@ import scijoker.npsdk.common.Base_Request;
  * Created by scijoker on 20.10.16.
  */
 
-public class GetCounterpartyAddressesRequest extends Base_Request {
-    public GetCounterpartyAddressesRequest(boolean isSender, String ref) {
+public class CounterpartyGetCounterpartyAddressesRequest extends Base_Request {
+    public CounterpartyGetCounterpartyAddressesRequest(boolean isSender, String ref) {
         super("Counterparty", "getCounterpartyAddresses", new MethodProperties(isSender, ref));
     }
 

@@ -6,12 +6,12 @@ import scijoker.npsdk.common.Base_Request;
  * Created by scijoker on 20.10.16.
  */
 
-public class GetCounterpartiesRequest extends Base_Request {
-    public GetCounterpartiesRequest(boolean isSender, int page) {
+public class CounterpartyGetCounterpartiesRequest extends Base_Request {
+    public CounterpartyGetCounterpartiesRequest(boolean isSender, int page) {
         super("Counterparty", "getCounterparties", new WithPageMethodProperties(isSender, page));
     }
 
-    public GetCounterpartiesRequest(boolean isSender, String descriptionNamePrefix) {
+    public CounterpartyGetCounterpartiesRequest(boolean isSender, String descriptionNamePrefix) {
         super("Counterparty", "getCounterparties",new WithDescriptionNamePrefixMethodProperties(isSender,descriptionNamePrefix));
     }
 

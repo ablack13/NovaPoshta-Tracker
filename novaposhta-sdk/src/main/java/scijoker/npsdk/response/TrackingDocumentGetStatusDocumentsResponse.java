@@ -6,7 +6,7 @@ import scijoker.npsdk.common.Base_Response;
  * Created by scijoker on 15.10.16.
  */
 
-public class GetStatusDocumentsResponse extends Base_Response {
+public class TrackingDocumentGetStatusDocumentsResponse extends Base_Response {
     public Data[] data;
 
     public static class Data extends Base_Data {
