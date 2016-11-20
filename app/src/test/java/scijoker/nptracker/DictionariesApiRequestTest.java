@@ -5,21 +5,21 @@ import org.junit.Before;
 import org.junit.Test;
 
 import rx.functions.Action1;
-import scijoker.npsdk.NovaPoshtaSDK;
-import scijoker.npsdk.request.AddressGetCitiesRequest;
-import scijoker.npsdk.request.CounterpartyGetCounterpartiesRequest;
-import scijoker.npsdk.request.CounterpartyGetCounterpartyAddressesRequest;
-import scijoker.npsdk.request.TrackingDocumentGetStatusDocumentsRequest;
-import scijoker.npsdk.request.AddressGetStreetRequest;
-import scijoker.npsdk.request.AddressGetWarehouseTypesRequest;
-import scijoker.npsdk.request.AddressGetWarehousesRequest;
-import scijoker.npsdk.response.AddressGetCitiesResponse;
-import scijoker.npsdk.response.CounterpartyGetCounterpartiesResponse;
-import scijoker.npsdk.response.CounterpartyGetCounterpartyAddressesResponse;
-import scijoker.npsdk.response.TrackingDocumentGetStatusDocumentsResponse;
-import scijoker.npsdk.response.AddressGetStreetResponse;
-import scijoker.npsdk.response.AddressGetWarehouseTypesResponse;
-import scijoker.npsdk.response.AddressGetWarehousesResponse;
+import ablack13.npsdk.NovaPoshtaSDK;
+import ablack13.npsdk.request.AddressGetCitiesRequest;
+import ablack13.npsdk.request.CounterpartyGetCounterpartiesRequest;
+import ablack13.npsdk.request.CounterpartyGetCounterpartyAddressesRequest;
+import ablack13.npsdk.request.TrackingDocumentGetStatusDocumentsRequest;
+import ablack13.npsdk.request.AddressGetStreetRequest;
+import ablack13.npsdk.request.AddressGetWarehouseTypesRequest;
+import ablack13.npsdk.request.AddressGetWarehousesRequest;
+import ablack13.npsdk.response.AddressGetCitiesResponse;
+import ablack13.npsdk.response.CounterpartyGetCounterpartiesResponse;
+import ablack13.npsdk.response.CounterpartyGetCounterpartyAddressesResponse;
+import ablack13.npsdk.response.TrackingDocumentGetStatusDocumentsResponse;
+import ablack13.npsdk.response.AddressGetStreetResponse;
+import ablack13.npsdk.response.AddressGetWarehouseTypesResponse;
+import ablack13.npsdk.response.AddressGetWarehousesResponse;
 import scijoker.nptracker.net.ApiConstants;
 
 /**
@@ -42,7 +42,7 @@ public class DictionariesApiRequestTest {
 
     @Test
     public void testGetDocumentStatusesRequest() {
-        NovaPoshtaSDK.getDictionariesApi()
+        NovaPoshtaSDK.getApi()
                 .getTrackingDocumentStatuses(new TrackingDocumentGetStatusDocumentsRequest(phone, ttn))
                 .subscribe(new Action1<TrackingDocumentGetStatusDocumentsResponse>() {
                     @Override
@@ -65,8 +65,8 @@ public class DictionariesApiRequestTest {
 
     @Test
     public void testGetCitiesRequest() {
-        NovaPoshtaSDK.getDictionariesApi()
-                .getCities(new AddressGetCitiesRequest())
+        NovaPoshtaSDK.getApi()
+                .getAddressCities(new AddressGetCitiesRequest())
                 .subscribe(new Action1<AddressGetCitiesResponse>() {
                     @Override
                     public void call(AddressGetCitiesResponse response) {
@@ -80,8 +80,8 @@ public class DictionariesApiRequestTest {
 
     @Test
     public void testGetCitiesByNamePrefixRequest() {
-        NovaPoshtaSDK.getDictionariesApi()
-                .getCities(new AddressGetCitiesRequest(cityNamePrefix))
+        NovaPoshtaSDK.getApi()
+                .getAddressCities(new AddressGetCitiesRequest(cityNamePrefix))
                 .subscribe(new Action1<AddressGetCitiesResponse>() {
                     @Override
                     public void call(AddressGetCitiesResponse response) {
@@ -96,8 +96,8 @@ public class DictionariesApiRequestTest {
 
     @Test
     public void testGetStreetRequest() {
-        NovaPoshtaSDK.getDictionariesApi()
-                .getStreet(new AddressGetStreetRequest(cityRef, 1))
+        NovaPoshtaSDK.getApi()
+                .getAddressStreet(new AddressGetStreetRequest(cityRef, 1))
                 .subscribe(new Action1<AddressGetStreetResponse>() {
                     @Override
                     public void call(AddressGetStreetResponse response) {
@@ -112,8 +112,8 @@ public class DictionariesApiRequestTest {
 
     @Test
     public void testGetStreetByNamePrefixRequest() {
-        NovaPoshtaSDK.getDictionariesApi()
-                .getStreet(new AddressGetStreetRequest(cityRef, streetNamePrefix))
+        NovaPoshtaSDK.getApi()
+                .getAddressStreet(new AddressGetStreetRequest(cityRef, streetNamePrefix))
                 .subscribe(new Action1<AddressGetStreetResponse>() {
                     @Override
                     public void call(AddressGetStreetResponse response) {
@@ -128,8 +128,8 @@ public class DictionariesApiRequestTest {
 
     @Test
     public void testGetWarehousesRequest() {
-        NovaPoshtaSDK.getDictionariesApi()
-                .getWarehouses(new AddressGetWarehousesRequest(cityRef))
+        NovaPoshtaSDK.getApi()
+                .getAddressWarehouses(new AddressGetWarehousesRequest(cityRef))
                 .subscribe(new Action1<AddressGetWarehousesResponse>() {
                     @Override
                     public void call(AddressGetWarehousesResponse response) {
@@ -144,8 +144,8 @@ public class DictionariesApiRequestTest {
 
     @Test
     public void testGetWarehouseTypesRequest() {
-        NovaPoshtaSDK.getDictionariesApi()
-                .getWarehouseTypes(new AddressGetWarehouseTypesRequest())
+        NovaPoshtaSDK.getApi()
+                .getAddressWarehouseTypes(new AddressGetWarehouseTypesRequest())
                 .subscribe(new Action1<AddressGetWarehouseTypesResponse>() {
                     @Override
                     public void call(AddressGetWarehouseTypesResponse response) {
@@ -160,8 +160,8 @@ public class DictionariesApiRequestTest {
 
     @Test
     public void testGetCounterpartiesRequest() {
-        NovaPoshtaSDK.getDictionariesApi()
-                .getCounterparties(new CounterpartyGetCounterpartiesRequest(false, 1))
+        NovaPoshtaSDK.getApi()
+                .getCounterpartyCounterparties(new CounterpartyGetCounterpartiesRequest(false, 1))
                 .subscribe(new Action1<CounterpartyGetCounterpartiesResponse>() {
                     @Override
                     public void call(CounterpartyGetCounterpartiesResponse response) {
@@ -176,8 +176,8 @@ public class DictionariesApiRequestTest {
 
     @Test
     public void testGetCounterpartiesWithDescriptionNamePrefixRequest() {
-        NovaPoshtaSDK.getDictionariesApi()
-                .getCounterparties(new CounterpartyGetCounterpartiesRequest(false, descriptionNamePrefix))
+        NovaPoshtaSDK.getApi()
+                .getCounterpartyCounterparties(new CounterpartyGetCounterpartiesRequest(false, descriptionNamePrefix))
                 .subscribe(new Action1<CounterpartyGetCounterpartiesResponse>() {
                     @Override
                     public void call(CounterpartyGetCounterpartiesResponse response) {
@@ -192,8 +192,8 @@ public class DictionariesApiRequestTest {
 
     @Test
     public void testGetCounterpartyAddressesRequest() {
-        NovaPoshtaSDK.getDictionariesApi()
-                .getCounterpartyAddresses(new CounterpartyGetCounterpartyAddressesRequest(false, conterpartyRef))
+        NovaPoshtaSDK.getApi()
+                .getCounterpartyAddressesForCounterparty(new CounterpartyGetCounterpartyAddressesRequest(false, conterpartyRef))
                 .subscribe(new Action1<CounterpartyGetCounterpartyAddressesResponse>() {
                     @Override
                     public void call(CounterpartyGetCounterpartyAddressesResponse response) {

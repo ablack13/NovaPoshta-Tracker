@@ -2,7 +2,7 @@ package scijoker.nptracker.app;
 
 import android.app.Application;
 
-import scijoker.npsdk.NovaPoshtaSDK;
+import ablack13.npsdk.NovaPoshtaSDK;
 import scijoker.nptracker.net.ApiConstants;
 
 
